@@ -48,6 +48,3 @@ set wildignore+=*.log,*.cache
 " reindex after creating new file
 noremap <Leader>r :CommandTFlush<CR>
 
-
-
-
