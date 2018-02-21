@@ -27,6 +27,13 @@ set expandtab
 set smartindent
 set autoindent
 
+"Let's be more clear!
+set title               " change the title of the terminal to file name
+set history=1000        " more history!
+set undolevels=1000     " more undo levels!
+set number              " label the numbers of each line
+set numberwidth=4       " cap line cout at 99999
+
 " Automatically remove whitespaces on save
 autocmd BufWritePre * : %s/\s\s+$//e
 
