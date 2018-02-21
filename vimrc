@@ -3,6 +3,9 @@ filetype on
 syntax on
 colorscheme Tomorrow-Night
 
+" start in insert mode
+au BufRead,BufNewFile * start
+
 set colorcolumn=90
 set number
 
@@ -48,3 +51,5 @@ set wildignore+=*.log,*.cache
 " reindex after creating new file
 noremap <Leader>r :CommandTFlush<CR>
 
+" Lightline - make it show up with single screen
+set laststatus=2
