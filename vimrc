@@ -1,3 +1,4 @@
+set nocompatible
 execute pathogen#infect()
 filetype on
 syntax on
@@ -27,12 +28,34 @@ set expandtab
 set smartindent
 set autoindent
 
+" make backspace work like in most other programs (e.g. delete in insert mode)
+set backspace=indent,eol,start
+
 "Let's be more clear!
 set title               " change the title of the terminal to file name
 set history=1000        " more history!
 set undolevels=1000     " more undo levels!
 set number              " label the numbers of each line
 set numberwidth=4       " cap line cout at 99999
+
+" make numbers relative in normal mode
+:set relativenumber
+
+:augroup numbertoggle
+:  autocmd!
+:  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+:  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+:augroup END
+
+function! NumberToggle()
+    if(&relativenumber == 1)
+        set norelativenumber
+    else
+        set relativenumber
+    endif
+endfunc
+
+nnoremap <C-t> :call NumberToggle()<cr>
 
 " Automatically remove whitespaces on save
 autocmd BufWritePre * : %s/\s\s+$//e
